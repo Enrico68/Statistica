@@ -213,7 +213,7 @@ legend('left', col = 'red', legend = 'ROC(25)', lty = 1, bty = 'n',
 
        
 ```
-
+verifico i cambiamenti nel git 
 
 
 
