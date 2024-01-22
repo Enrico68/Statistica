@@ -1,17 +1,22 @@
 ---
-title: "Cripto_updated" 
-author: "Enrico Pirani" 
-date: "2023-09-05"      
+title: "A Tufte Handout Example"
+runningheader: "Tufte Handout with R Markdown" # only for pdf output
+subtitle: "An implementation in R Markdown" # only for html output
+author: "JJ Allaire and Yihui Xie"
+date: "`r Sys.Date()`"
 output:
   tufte::tufte_html: default
-  tufte::tufte_handout: default
+  tufte::tufte_handout:
+    citation_package: natbib
+    latex_engine: xelatex
+  tufte::tufte_book:
+    citation_package: natbib
+    latex_engine: xelatex
+bibliography: 
+link-citations: yes
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-## Passo 1: Importazione delle librerie necessarie
+## Importazione delle librerie necessarie
 
 
 In primo luogo, per eseguire il nostro processo di creazione di
