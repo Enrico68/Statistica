@@ -1,8 +1,8 @@
 ---
-title: "A Tufte Handout Example"
-runningheader: "Tufte Handout with R Markdown" # only for pdf output
-subtitle: "An implementation in R Markdown" # only for html output
-author: "JJ Allaire and Yihui Xie"
+title: "Crypto News!"
+runningheader: "Una Newsletter sull'andamento delle crypto" # only for pdf output
+subtitle: "Una Newsletter sull'andamento delle crypto" # only for html output
+author: "Enrico Pirani Max"
 date: "`r Sys.Date()`"
 output:
   tufte::tufte_html: default
@@ -17,7 +17,7 @@ link-citations: yes
 ---
 
 ## Importazione delle librerie necessarie
-
+<span style='color:#4caf50'></span>
 
 In primo luogo, per eseguire il nostro processo di creazione di
 strategie di trading, dobbiamo importare le librerie necessarie nel
