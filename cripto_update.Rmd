@@ -1,18 +1,23 @@
 ---
-title: "Cripto_updated" 
-author: "Enrico Pirani" 
-date: "2023-09-05"      
+title: "Crypto News!"
+runningheader: "Una Newsletter sull'andamento delle crypto" # only for pdf output
+subtitle: "Una Newsletter sull'andamento delle crypto" # only for html output
+author: "Enrico Pirani Max"
+date: "`r Sys.Date()`"
 output:
   tufte::tufte_html: default
-  tufte::tufte_handout: default
+  tufte::tufte_handout:
+    citation_package: natbib
+    latex_engine: xelatex
+  tufte::tufte_book:
+    citation_package: natbib
+    latex_engine: xelatex
+bibliography: 
+link-citations: yes
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-## Passo 1: Importazione delle librerie necessarie
-
+## Importazione delle librerie necessarie
+<span style='color:#4caf50'></span>
 
 In primo luogo, per eseguire il nostro processo di creazione di
 strategie di trading, dobbiamo importare le librerie necessarie nel
@@ -25,20 +30,6 @@ importare i nostri pacchetti richiesti.
 library(quantmod)
 library(TTR)
 library(PerformanceAnalytics)
-```
-```{r}
-library(tictoc)
-tic("total")
-tic("data generation")
-X <- matrix(rnorm(50000*1000), 50000, 1000)
-b <- sample(1:1000, 1000)
-y <- runif(1) + X %*% b + rnorm(50000)
-toc()
-tic("model fitting")
-model <- lm(y ~ X)
-toc()
-toc()
-
 ```
 
 
