@@ -254,14 +254,11 @@ conteggio_colore <- table(colors_data$COLOUR)
 etichette_colori <- c("Rosso", "Verde", "Marrone", "Nero", "Bianco", "Blue", "Giallo")
 ```
 
-```{r fig-fullwidth, fig.width = 10, fig.height = 2, fig.fullwidth = TRUE, fig.cap = "A full width figure.", warning=FALSE, message=FALSE, cache=TRUE}
+```{r fig-colors, fig.width = 10, fig.height = 5, fig.fullwidth = TRUE, fig.cap = "A full width figure.", warning=FALSE, message=FALSE, cache=TRUE}
 barplot(conteggio_colore, main = "Preferenza di colore", 
         xlab = "Colore", ylab = "Numero di persone", 
         names.arg = etichette_colori)
 ```
-
-
-
 
 
 
