@@ -229,22 +229,19 @@ Ora per importare il dataset nel mio database sqlite uso questo codice
 ```R
 library(haven)
 library(DBI)
-data_colors <- read_sav("/Users/enricopirani/Downloads/ch03_favourite_colours.sav")
 con <- dbConnect(RSQLite::SQLite(), dbname= "~/Statistica/dog_walking.db")
-dbWriteTable(con, "colors", data_colors, overwrite = TRUE)
-query <- "SELECT * FROM colors"
-colors_data <- dbGetQuery(con, query)
-
+colors_data <- dbReadTable(con, "colors")
 ```
-Ora ottengo l'istogramma dal dataset 
+
 
 ```R
-library(ggplot2)
-# Crea l'istogramma
-grafico_istogramma <- ggplot(data_colors, aes(x = colours)) +
-  geom_bar(fill = "green", color = "black") +
-  theme(panel.background = element_rect(fill = "black"))
-print(grafico_istogramma)
+# Funzione da rivedere
+## library(ggplot2)
+## # Crea l'istogramma
+## grafico_istogramma <- ggplot(data_colors, aes(x = colours)) +
+##   geom_bar(fill = "green", color = "black") +
+##   theme(panel.background = element_rect(fill = "black"))
+## print(grafico_istogramma)
 
 ```
 Nel dataset colors_data ho due colonne nella prima c'è l' ID del soggetto nella seconda un numero che varia da 1 a 7. Ogni numero corrisponde a 1=Rosso , 2=Verde, 3=Marrone, 4=Nero, 5=Bianco, 6=Blue, 7=Giallo. Ora devo creare un histogramma in cui nelle X c'è il colore preferito mentre nelle Y il numero di persone. Come posso farlo in R
@@ -259,6 +256,81 @@ barplot(conteggio_colore, main = "Preferenza di colore",
         xlab = "Colore", ylab = "Numero di persone", 
         names.arg = etichette_colori)
 ```
+## Grafici Steam-Leaf ##
+
+Gli stem and leaf plots, o diagrammi a gambo e foglia, sono simili agli istogrammi di frequenza in quanto permettono di visualizzare come sono distribuiti i punteggi. Tuttavia, mantengono anche i valori delle singole osservazioni. Sviluppati da Tukey nel 1977, sono solitamente più facili da disegnare a mano rispetto agli istogrammi. Il diagramma a gambo e foglia per i dati utilizzati per illustrare il calcolo della media, mediana e moda (2, 12, 12, 19, 19, 20, 20, 20, 25) è presentato nella seguente codice.
+
+```R
+# Crea un vettore di dati
+data <- c(2, 12, 12, 19, 19, 20, 20, 20, 25)
+
+# Utilizza la funzione stem() per generare il grafico stem-and-leaf
+stem(data)
+```
+
+## Box Plot ##
+Il box plot, anche noto come diagramma a scatola e baffi, è una tecnica grafica sviluppata da Tukey nel 1977. Questo strumento è utile quando si desidera identificare punteggi estremi in un set di dati, anche se non sono immediatamente evidenti. Il box plot fornisce una chiara indicazione dei punteggi estremi e, come i diagrammi a stelo e foglia e gli istogrammi, offre informazioni sulla distribuzione dei punteggi.
+
+Nel contesto dell'esempio sulla depressione, il box plot aiuta a visualizzare in modo efficace la presenza di punteggi estremi nel set di dati, offrendo una rappresentazione visiva della distribuzione.
+
+Esempio di codice R per creare un box plot:
+
+```R
+# Creazione di un set di dati di esempio
+depression_data <- c(10, 15, 18, 22, 28, 35, 50, 60, 75, 90, 110)
+
+# Creazione di un box plot
+boxplot(depression_data, main="Box Plot - Esempio Depression Data")
+```
+
+## Diagrammi a Dispersione ##
+Una tecnica utile per esaminare la relazione tra due variabili è ottenere un diagramma a dispersione. Un esempio di un diagramma a dispersione è mostrato nella Figura  per i dati sull'ansia da statistica e la procrastinazione.
+Carichiamo il dataset partendo da un database `SQL`
+
+```R
+library(RSQLite)
+library(dplyr)
+# Connect to the SQLite database
+con <- dbConnect(SQLite(), dbname = "/Users/enricopirani/Statistica/datasets_vari.db")
+
+# Retrieve data from the SQLite table
+survey <- dbReadTable(con, "survey_data")
+dbDisconnect(con)
+
+```
+Supponiamo che durante il tuo studio sull'ansia da statistica tu abbia riscontrato che, all'aumentare dell'ansia da statistica, la procrastinazione diminuisse. Cosa pensi che assomigli il diagramma a dispersione risultante? Potresti notare che assomiglia a quello presentato nella Figura. Ora puoi vedere dal diagramma a dispersione nella Figura che, all'aumentare della procrastinazione, diminuisce l'ansia statistica. I punteggi sembrano raggrupparsi attorno a una linea immaginaria che va dall'angolo in alto a sinistra all'angolo in basso a destra del diagramma a dispersione. Chiameremmo questo una relazione negativa.
+Ora eseguiamo uno *scatterplot* o diagramma a dispersione utilizzando R. 
+
+```{r fig-scatterplot, fig.width = 10, fig.height = 5, fig.fullwidth = TRUE, fig.cap = "Diagramma a dispersione per l'ansia da statistica e la procrastinazione.", warning=FALSE, message=FALSE, cache=TRUE}
+library(ggplot2)
+ggplot (survey, aes(x = procrastination, y = statistics_anxiety)) +
+  geom_point() +
+  labs(title = "Scatterplot of Statistics Anxiety and Procrastination",
+       x = "Statistics Anxiety",
+       y = "Procrastination")
+```
+Ora possiamo vedere come invertendo i i dati degli assi x e y sia più evidente la correlazione.
+
+```{r fig-scatterplot, fig.width = 10, fig.height = 5, fig.fullwidth = TRUE, fig.cap = "Diagramma a dispersione che indica che, all'aumentare dell'ansia da statistica, la procrastinazione aumenta.", warning=FALSE, message=FALSE, cache=TRUE}
+library(ggplot2)
+ggplot (survey, aes(x = statistics_anxiety, y = procrastination)) +
+  geom_point() +
+  labs(title = "Scatterplot of Statistics Anxiety and Procrastination",
+       x = "Statistics Anxiety",
+       y = "Procrastination")
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
