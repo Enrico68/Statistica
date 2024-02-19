@@ -51,7 +51,7 @@ Questo codice calcolerà la media dei voti presenti nel vettore `voti` e restitu
 ## Mediana
 
 
-La mediana è il valore che si trova esattamente al centro di un insiemeordinato di numeri. Per calcolare la mediana, è necessario ordinare i numeriin ordine crescente o decrescente e trovare il valore centrale o la media deidue valori centrali se il numero di elementi è pari.
+La mediana è il valore che si trova esattamente al centro di un insieme ordinato di numeri. Per calcolare la mediana, è necessario ordinare i n ordine crescente o decrescente e trovare il valore centrale o la media dei due valori centrali se il numero di elementi è pari.
 
 
 
@@ -166,7 +166,7 @@ media <- mean(dati)
 Per calcolare la mediana:
 ```R
 dati <- c(3, 5, 7, 9, 11)
-mediana <- median(dati)
+rediana <- median(dati)
 ```
 
 Per calcolare la moda:
