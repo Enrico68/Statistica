@@ -1,9 +1,9 @@
 ---
 title: "Crypto News!"
 runningheader: "Una Newsletter sull'andamento delle crypto" # only for pdf output
-subtitle: "Una Newsletter sull'andamento delle crypto" # only for html output
+fubtitle: "Una Newsletter sull'andamento delle crypto" # only for html output
 author: "Enrico Pirani Max"
-date: "`r Sys.Date()`"
+fate: "`r Sys.Date()`"
 output:
   tufte::tufte_html: default
   tufte::tufte_handout:
@@ -26,14 +26,17 @@ Performance Analytics. Utilizzando la funzione library in R, possiamo
 importare i nostri pacchetti richiesti.
 
 ```{r}
+```
+
+
+```{r}
 library(quantmod)
-library(TTR)
 library(PerformanceAnalytics)
+library(TTR)
 ```
 
 
 ## Passaggio 2: Estrazione dei dati da Yahoo e Plotting di base
-
 Durante tutto il nostro processo, lavoreremo con i dati del prezzo delle
 cryptovalute Bitcoin, Ethereum, Binance, Cardano e XRP. Estraiamo i dati
 di queste valute da Yahoo in R.
@@ -44,6 +47,7 @@ getSymbols("ETH-USD", src = "yahoo", from = "2019-01-01")
 getSymbols("BNB-USD", src = "yahoo", from = "2019-01-01")
 getSymbols("ADA-USD", src = "yahoo", from = "2019-01-01")
 getSymbols("XRP-USD", src = "yahoo", from = "2019-01-01")
+getSymbols("SOL-USD", src = "yahoo", from = "2020-01-01")
 ```
 
 Ora facciamo un po' di visualizzazione dei nostri dati estratti! Il
@@ -51,11 +55,12 @@ seguente codice produce un grafico a barre finanziario dei prezzi delle
 azioni insieme al volume.
 
 ```{r}
-barChart(`BTC-USD`, theme = chartTheme('black'))
-barChart(`BNB-USD`,theme = chartTheme('black'))
-barChart(`ETH-USD`,theme = chartTheme('black'))
-barChart(`ADA-USD`,theme = chartTheme('black'))
-barChart(`XRP-USD`,theme = chartTheme('black'))
+barChart(`BTC-USD`, theme = chartTheme("black"))
+barChart(`BNB-USD`, theme = chartTheme("black"))
+barChart(`ETH-USD`, theme = chartTheme("black"))
+barChart(`ADA-USD`, theme = chartTheme("black"))
+barChart(`XRP-USD`, theme = chartTheme("black"))
+barChart(`SOL-USD`, theme = chartTheme("black"))
 ```
 
 ## Creazione di indicatori tecnici
@@ -81,24 +86,28 @@ XRP <- `XRP-USD`
 # 1. BTC-USD
 sma50_btc <- SMA(BTC$`BTC-USD.Close`, n = 50)
 sma100_btc <- SMA(BTC$`BTC-USD.Close`, n = 100)
-lineChart(`BTC-USD`, theme = chartTheme('black'))
-addSMA(n = 50, col = 'blue')
-addSMA(n = 100, col = 'orange')
-legend('left', col = c('green','blue','orange'),
-       legend = c('BTC-USD','SMA50','SMA100'), lty = 1, bty = 'n',
-       text.col = 'white', cex = 0.8)
+lineChart(`BTC-USD`, theme = chartTheme("black"))
+addSMA(n = 50, col = "blue")
+addSMA(n = 100, col = "orange")
+legend("left",
+  col = c("green", "blue", "orange"),
+  legend = c("BTC-USD", "SMA50", "SMA100"), lty = 1, bty = "n",
+  text.col = "white", cex = 0.8
+)
 ```
 
 ```{r}
 # 2. ETH-USD
 sma50_btc <- SMA(ETH$`ETH-USD.Close`, n = 50)
 sma100_btc <- SMA(ETH$`ETH-USD.Close`, n = 100)
-lineChart(`ETH-USD`, theme = chartTheme('black'))
-addSMA(n = 50, col = 'blue')
-addSMA(n = 100, col = 'orange')
-legend('left', col = c('green','blue','orange'),
-       legend = c('ETH-USD','SMA50','SMA100'), lty = 1, bty = 'n',
-       text.col = 'white', cex = 0.8)
+lineChart(`ETH-USD`, theme = chartTheme("black"))
+addSMA(n = 50, col = "blue")
+addSMA(n = 100, col = "orange")
+legend("left",
+  col = c("green", "blue", "orange"),
+  legend = c("ETH-USD", "SMA50", "SMA100"), lty = 1, bty = "n",
+  text.col = "white", cex = 0.8
+)
 ```
 
 
@@ -106,35 +115,41 @@ legend('left', col = c('green','blue','orange'),
 ```{r}
 sma50_btc <- SMA(ADA$`ADA-USD.Close`, n = 50)
 sma100_btc <- SMA(ADA$`ADA-USD.Close`, n = 100)
-lineChart(`ADA-USD`, theme = chartTheme('black'))
-addSMA(n = 50, col = 'blue')
-addSMA(n = 100, col = 'orange')
-legend('left', col = c('green','blue','orange'),
-       legend = c('ADA-USD','SMA50','SMA100'), lty = 1, bty = 'n',
-       text.col = 'white', cex = 0.8)
+lineChart(`ADA-USD`, theme = chartTheme("black"))
+addSMA(n = 50, col = "blue")
+addSMA(n = 100, col = "orange")
+legend("left",
+  col = c("green", "blue", "orange"),
+  legend = c("ADA-USD", "SMA50", "SMA100"), lty = 1, bty = "n",
+  text.col = "white", cex = 0.8
+)
 ```
 
 ```{r}
 sma50_btc <- SMA(BNB$`BNB-USD.Close`, n = 50)
 sma100_btc <- SMA(BNB$`BNB-USD.Close`, n = 100)
-lineChart(`BNB-USD`, theme = chartTheme('black'))
-addSMA(n = 50, col = 'blue')
-addSMA(n = 100, col = 'orange')
-legend('left', col = c('green','blue','orange'),
-       legend = c('BNB-USD','SMA50','SMA100'), lty = 1, bty = 'n',
-       text.col = 'white', cex = 0.8)
+lineChart(`BNB-USD`, theme = chartTheme("black"))
+addSMA(n = 50, col = "blue")
+addSMA(n = 100, col = "orange")
+legend("left",
+  col = c("green", "blue", "orange"),
+  legend = c("BNB-USD", "SMA50", "SMA100"), lty = 1, bty = "n",
+  text.col = "white", cex = 0.8
+)
 ```
 
 
 ```{r}
 sma50_btc <- SMA(XRP$`XRP-USD.Close`, n = 50)
 sma100_btc <- SMA(XRP$`XRP-USD.Close`, n = 100)
-lineChart(`XRP-USD`, theme = chartTheme('black'))
-addSMA(n = 50, col = 'blue')
-addSMA(n = 100, col = 'orange')
-legend('left', col = c('green','blue','orange'),
-       legend = c('BNB-USD','SMA50','SMA100'), lty = 1, bty = 'n',
-       text.col = 'white', cex = 0.8)
+lineChart(`XRP-USD`, theme = chartTheme("black"))
+addSMA(n = 50, col = "blue")
+addSMA(n = 100, col = "orange")
+legend("left",
+  col = c("green", "blue", "orange"),
+  legend = c("BNB-USD", "SMA50", "SMA100"), lty = 1, bty = "n",
+  text.col = "white", cex = 0.8
+)
 ```
 
 ### Indice del Canale delle Materie Prime (CCI):
@@ -144,35 +159,32 @@ Per calcolare il CCI, dobbiamo considerare i prezzi giornalieri di massimo, mini
 Il seguente codice calcolerà il CCI delle aziende insieme a un grafico:
 
 ```{r}
-# 1.BTC 
+# 1.BTC
 cci_BTC <- CCI(HLC(BTC), n = 20, c = 0.015)
-barChart(BTC, theme = 'black')
+barChart(BTC, theme = "black")
 addCCI(n = 20, c = 0.015)
 
-# 2.ETH 
+# 2.ETH
 cci_eth <- CCI(HLC(ETH), n = 20, c = 0.015)
-barChart(ETH, theme = 'black')
+barChart(ETH, theme = "black")
 addCCI(n = 20, c = 0.015)
 
-# 3.BNB 
+# 3.BNB
 cci_BNB <- CCI(HLC(BNB), n = 20, c = 0.015)
-barChart(BNB, theme = 'black')
+barChart(BNB, theme = "black")
 addCCI(n = 20, c = 0.015)
 
 # 4. XRP
 
 cci_XRP <- CCI(HLC(XRP), n = 20, c = 0.015)
-barChart(XRP, theme = 'black')
+barChart(XRP, theme = "black")
 addCCI(n = 20, c = 0.015)
 
 # 5.ADA
 
 cci_ADA <- CCI(HLC(ADA), n = 20, c = 0.015)
-barChart(ADA, theme = 'black')
+barChart(ADA, theme = "black")
 addCCI(n = 20, c = 0.015)
-
-
-
 ```
 
 ### Tasso di variazione (ROC)
@@ -184,39 +196,47 @@ Il codice seguente calcolerà il ROC delle aziende insieme a un grafico:
 ```{r}
 # 1. BTC
 roc_btc <- ROC(BTC$`BTC-USD.Close`, n = 25)
-barChart(BTC, theme = 'black')
+barChart(BTC, theme = "black")
 addROC(n = 25)
-legend('left', col = 'red', legend = 'ROC(25)', lty = 1, bty = 'n',
-       text.col = 'white', cex = 0.8)
+legend("left",
+  col = "red", legend = "ROC(25)", lty = 1, bty = "n",
+  text.col = "white", cex = 0.8
+)
 
 roc_ETH <- ROC(ETH$`ETH-USD.Close`, n = 25)
-barChart(ETH, theme = 'black')
+barChart(ETH, theme = "black")
 addROC(n = 25)
-legend('left', col = 'red', legend = 'ROC(25)', lty = 1, bty = 'n',
-       text.col = 'white', cex = 0.8)
+legend("left",
+  col = "red", legend = "ROC(25)", lty = 1, bty = "n",
+  text.col = "white", cex = 0.8
+)
 
 
 roc_BNB <- ROC(BNB$`BNB-USD.Close`, n = 25)
-barChart(BNB, theme = 'black')
+barChart(BNB, theme = "black")
 addROC(n = 25)
-legend('left', col = 'red', legend = 'ROC(25)', lty = 1, bty = 'n',
-       text.col = 'white', cex = 0.8)
+legend("left",
+  col = "red", legend = "ROC(25)", lty = 1, bty = "n",
+  text.col = "white", cex = 0.8
+)
 
 
 roc_XRP <- ROC(XRP$`XRP-USD.Close`, n = 25)
-barChart(XRP, theme = 'black')
+barChart(XRP, theme = "black")
 addROC(n = 25)
-legend('left', col = 'red', legend = 'ROC(25)', lty = 1, bty = 'n',
-       text.col = 'white', cex = 0.8)
+legend("left",
+  col = "red", legend = "ROC(25)", lty = 1, bty = "n",
+  text.col = "white", cex = 0.8
+)
 
 
 roc_ADA <- ROC(ADA$`ADA-USD.Close`, n = 25)
-barChart(ADA, theme = 'black')
+barChart(ADA, theme = "black")
 addROC(n = 25)
-legend('left', col = 'red', legend = 'ROC(25)', lty = 1, bty = 'n',
-       text.col = 'white', cex = 0.8)
-
-       
+legend("left",
+  col = "red", legend = "ROC(25)", lty = 1, bty = "n",
+  text.col = "white", cex = 0.8
+)
 ```
 
 
