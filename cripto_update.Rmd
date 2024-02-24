@@ -26,6 +26,11 @@ Performance Analytics. Utilizzando la funzione library in R, possiamo
 importare i nostri pacchetti richiesti.
 
 ```{r}
+y <- rnorm(100)
+x <- rnorm(100)
+m <- lm(y ~ x)
+summary(x)
+summary(m)
 ```
 
 
@@ -37,7 +42,7 @@ library(TTR)
 
 
 ## Passaggio 2: Estrazione dei dati da Yahoo e Plotting di base
-Durante tutto il nostro processo, lavoreremo con i dati del prezzo delle
+furante tutto il nostro processo, lavoreremo con i dati del prezzo delle
 cryptovalute Bitcoin, Ethereum, Binance, Cardano e XRP. Estraiamo i dati
 di queste valute da Yahoo in R.
 
