@@ -243,8 +243,40 @@ legend("left",
   text.col = "white", cex = 0.8
 )
 ```
+```{r}
+# Set the number of successes (3 heads)
+x <- 3
 
+# Set the number of trials (5 coin flips)
+size <- 5
 
+# Set the probability of success (0.5 for a fair coin)
+prob <- 0.5
 
+# Calculate the probability using the dbinom function
+probability <- dbinom(x, size, prob)
+
+# Print the result
+print(probability)
+```
+
+# Generate random data following a normal Distribution
+```{r}
+data <- rnorm(1000, mean = 0, sd = 1)
+# Plot a histogram of the data
+hist(data, breaks = 30, col = "skyblue", main = "Normal Distribution", xlab = "Values", ylab = "Frequency")
+# Add a curve representing the probability density function of the normal distribution
+curve(dnorm(x, mean = mean(data), sd = sd(data)), add = TRUE, col = "red")
+```
+
+In this example, we first generate a sample of random data following a normal distribution using the rnorm() function. We then create a
+histogram plot of the data using the hist() function, which visualizes the distribution of the data.
+
+To overlay a curve representing the probability density function of the normal distribution on the histogram, we use the curve() function
+with the dnorm() function to calculate the probability density at each point.
+
+This simple R Markdown code provides a visual and practical demonstration of the normal distribution, allowing readers to understand and
+appreciate this fundamental concept in statistics.
+```
 
 
