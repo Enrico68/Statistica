@@ -5,13 +5,13 @@ subtitle: "Un manualetto di statistica adatta ad uso medico" # only for html out
 author: "Pirani Max Enrico"
 date: "`r Sys.Date()`"
 output:
-  tufte::tufte_html: default
   tufte::tufte_handout:
     citation_package: natbib
     latex_engine: xelatex
   tufte::tufte_book:
     citation_package: natbib
     latex_engine: xelatex
+  tufte::tufte_html: default
 bibliography: skeleton.bib
 link-citations: yes
 ---
@@ -229,7 +229,7 @@ Ora per importare il dataset nel mio database sqlite uso questo codice
 ```R
 library(haven)
 library(DBI)
-con <- dbConnect(RSQLite::SQLite(), dbname= "~/Statistica/dog_walking.db")
+con <- dbConnect(RSQLite::SQLite(), dbname= "dog_walking.db")
 colors_data <- dbReadTable(con, "colors")
 ```
 
@@ -247,15 +247,10 @@ colors_data <- dbReadTable(con, "colors")
 Nel dataset colors_data ho due colonne nella prima c'è l' ID del soggetto nella seconda un numero che varia da 1 a 7. Ogni numero corrisponde a 1=Rosso , 2=Verde, 3=Marrone, 4=Nero, 5=Bianco, 6=Blue, 7=Giallo. Ora devo creare un histogramma in cui nelle X c'è il colore preferito mentre nelle Y il numero di persone. Come posso farlo in R
 
 ```R
-conteggio_colore <- table(colors_data$COLOUR)
-etichette_colori <- c("Rosso", "Verde", "Marrone", "Nero", "Bianco", "Blue", "Giallo")
+#conteggio_colore <- table(colors_data$COLOUR)
+#etichette_colori <- c("Rosso", "Verde", "Marrone", "Nero", "Bianco", "Blue", "Giallo")
 ```
 
-```{r fig-colors, fig.width = 10, fig.height = 5, fig.fullwidth = TRUE, fig.cap = "A full width figure.", warning=FALSE, message=FALSE, cache=TRUE}
-barplot(conteggio_colore, main = "Preferenza di colore", 
-        xlab = "Colore", ylab = "Numero di persone", 
-        names.arg = etichette_colori)
-```
 ## Grafici Steam-Leaf ##
 
 Gli stem and leaf plots, o diagrammi a gambo e foglia, sono simili agli istogrammi di frequenza in quanto permettono di visualizzare come sono distribuiti i punteggi. Tuttavia, mantengono anche i valori delle singole osservazioni. Sviluppati da Tukey nel 1977, sono solitamente più facili da disegnare a mano rispetto agli istogrammi. Il diagramma a gambo e foglia per i dati utilizzati per illustrare il calcolo della media, mediana e moda (2, 12, 12, 19, 19, 20, 20, 20, 25) è presentato nella seguente codice.
@@ -291,7 +286,7 @@ Carichiamo il dataset partendo da un database `SQL`
 library(RSQLite)
 library(dplyr)
 # Connect to the SQLite database
-con <- dbConnect(SQLite(), dbname = "/Users/enricopirani/Statistica/datasets_vari.db")
+con <- dbConnect(SQLite(), dbname = "datasets_vari.db")
 
 # Retrieve data from the SQLite table
 survey <- dbReadTable(con, "survey_data")
@@ -301,7 +296,7 @@ dbDisconnect(con)
 Supponiamo che durante il tuo studio sull'ansia da statistica tu abbia riscontrato che, all'aumentare dell'ansia da statistica, la procrastinazione diminuisse. Cosa pensi che assomigli il diagramma a dispersione risultante? Potresti notare che assomiglia a quello presentato nella Figura. Ora puoi vedere dal diagramma a dispersione nella Figura che, all'aumentare della procrastinazione, diminuisce l'ansia statistica. I punteggi sembrano raggrupparsi attorno a una linea immaginaria che va dall'angolo in alto a sinistra all'angolo in basso a destra del diagramma a dispersione. Chiameremmo questo una relazione negativa.
 Ora eseguiamo uno *scatterplot* o diagramma a dispersione utilizzando R. 
 
-```{r fig-scatterplot, fig.width = 10, fig.height = 5, fig.fullwidth = TRUE, fig.cap = "Diagramma a dispersione per l'ansia da statistica e la procrastinazione.", warning=FALSE, message=FALSE, cache=TRUE}
+```{r fig-procastination, fig.width = 10, fig.height = 5, fig.fullwidth = TRUE, fig.cap = "Diagramma a dispersione per l'ansia da statistica e la procrastinazione.", warning=FALSE, message=FALSE, cache=TRUE}
 library(ggplot2)
 ggplot (survey, aes(x = procrastination, y = statistics_anxiety)) +
   geom_point() +
