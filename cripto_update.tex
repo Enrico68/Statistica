@@ -136,8 +136,8 @@ importare i nostri pacchetti richiesti.
 \end{Shaded}
 
 \begin{verbatim}
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-## -2.7067 -0.3848  0.2961  0.2732  0.9606  3.2715
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## -2.38371 -0.77224 -0.09866 -0.07162  0.62338  2.08500
 \end{verbatim}
 
 \begin{Shaded}
@@ -153,18 +153,16 @@ importare i nostri pacchetti richiesti.
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -3.1737 -0.5614  0.0973  0.7656  2.1140 
+## -2.6502 -0.6489 -0.1231  0.6832  2.5922 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value Pr(>|t|)  
-## (Intercept) -0.230017   0.109606  -2.099   0.0384 *
-## x           -0.006153   0.100508  -0.061   0.9513  
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+##             Estimate Std. Error t value Pr(>|t|)
+## (Intercept)  0.12643    0.10198   1.240    0.218
+## x           -0.09846    0.10675  -0.922    0.359
 ## 
-## Residual standard error: 1.061 on 98 degrees of freedom
-## Multiple R-squared:  3.825e-05,  Adjusted R-squared:  -0.01017 
-## F-statistic: 0.003748 on 1 and 98 DF,  p-value: 0.9513
+## Residual standard error: 1.017 on 98 degrees of freedom
+## Multiple R-squared:  0.008607,   Adjusted R-squared:  -0.001509 
+## F-statistic: 0.8508 on 1 and 98 DF,  p-value: 0.3586
 \end{verbatim}
 
 \begin{Shaded}
@@ -374,6 +372,7 @@ giorni insieme ad un grafico:
 \NormalTok{BNB }\OtherTok{\textless{}{-}} \StringTok{\textasciigrave{}}\AttributeTok{BNB{-}USD}\StringTok{\textasciigrave{}}
 \NormalTok{ADA }\OtherTok{\textless{}{-}} \StringTok{\textasciigrave{}}\AttributeTok{ADA{-}USD}\StringTok{\textasciigrave{}}
 \NormalTok{XRP }\OtherTok{\textless{}{-}} \StringTok{\textasciigrave{}}\AttributeTok{XRP{-}USD}\StringTok{\textasciigrave{}}
+\NormalTok{SOL }\OtherTok{\textless{}{-}} \StringTok{\textasciigrave{}}\AttributeTok{SOL{-}USD}\StringTok{\textasciigrave{}}
 \end{Highlighting}
 \end{Shaded}
 
@@ -476,7 +475,7 @@ giorni insieme ad un grafico:
 \begin{Highlighting}[]
 \NormalTok{sma50\_btc }\OtherTok{\textless{}{-}} \FunctionTok{SMA}\NormalTok{(BNB}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{BNB{-}USD.Close}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{n =} \DecValTok{50}\NormalTok{)}
 \NormalTok{sma100\_btc }\OtherTok{\textless{}{-}} \FunctionTok{SMA}\NormalTok{(BNB}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{BNB{-}USD.Close}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{n =} \DecValTok{100}\NormalTok{)}
-\FunctionTok{lineChart}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{BNB{-}USD}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{theme =} \FunctionTok{chartTheme}\NormalTok{(}\StringTok{"black"}\NormalTok{))}
+\FunctionTok{lineChart}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{BNB{-}USD}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{theme =} \FunctionTok{chartTheme}\NormalTok{(}\StringTok{"white"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -534,6 +533,37 @@ giorni insieme ad un grafico:
 
 \includegraphics{cripto_update_files/figure-latex/unnamed-chunk-10-3}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sma50\_btc }\OtherTok{\textless{}{-}} \FunctionTok{SMA}\NormalTok{(SOL}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{SOL{-}USD.Close}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{n =} \DecValTok{50}\NormalTok{)}
+\NormalTok{sma100\_btc }\OtherTok{\textless{}{-}} \FunctionTok{SMA}\NormalTok{(SOL}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{SOL{-}USD.Close}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{n =} \DecValTok{100}\NormalTok{)}
+\FunctionTok{lineChart}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{SOL{-}USD}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{theme =} \FunctionTok{chartTheme}\NormalTok{(}\StringTok{"white"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-11-1}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{addSMA}\NormalTok{(}\AttributeTok{n =} \DecValTok{50}\NormalTok{, }\AttributeTok{col =} \StringTok{"blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-11-2}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{addSMA}\NormalTok{(}\AttributeTok{n =} \DecValTok{100}\NormalTok{, }\AttributeTok{col =} \StringTok{"orange"}\NormalTok{)}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"left"}\NormalTok{,}
+  \AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"green"}\NormalTok{, }\StringTok{"blue"}\NormalTok{, }\StringTok{"orange"}\NormalTok{),}
+  \AttributeTok{legend =} \FunctionTok{c}\NormalTok{(}\StringTok{"SOL{-}USD"}\NormalTok{, }\StringTok{"SMA50"}\NormalTok{, }\StringTok{"SMA100"}\NormalTok{), }\AttributeTok{lty =} \DecValTok{1}\NormalTok{, }\AttributeTok{bty =} \StringTok{"n"}\NormalTok{,}
+  \AttributeTok{text.col =} \StringTok{"white"}\NormalTok{, }\AttributeTok{cex =} \FloatTok{0.8}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-11-3}
+
 \hypertarget{indice-del-canale-delle-materie-prime-cci}{%
 \subsubsection{Indice del Canale delle Materie Prime
 (CCI):}\label{indice-del-canale-delle-materie-prime-cci}}
@@ -553,7 +583,7 @@ Il seguente codice calcolerà il CCI delle aziende insieme a un grafico:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-11-1}
+\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-12-1}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -561,7 +591,7 @@ Il seguente codice calcolerà il CCI delle aziende insieme a un grafico:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-11-2}
+\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-12-2}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -571,7 +601,7 @@ Il seguente codice calcolerà il CCI delle aziende insieme a un grafico:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-11-3}
+\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-12-3}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -579,7 +609,7 @@ Il seguente codice calcolerà il CCI delle aziende insieme a un grafico:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-11-4}
+\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-12-4}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -589,7 +619,7 @@ Il seguente codice calcolerà il CCI delle aziende insieme a un grafico:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-11-5}
+\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-12-5}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -597,7 +627,7 @@ Il seguente codice calcolerà il CCI delle aziende insieme a un grafico:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-11-6}
+\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-12-6}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -608,7 +638,7 @@ Il seguente codice calcolerà il CCI delle aziende insieme a un grafico:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-11-7}
+\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-12-7}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -616,7 +646,7 @@ Il seguente codice calcolerà il CCI delle aziende insieme a un grafico:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-11-8}
+\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-12-8}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -627,7 +657,7 @@ Il seguente codice calcolerà il CCI delle aziende insieme a un grafico:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-11-9}
+\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-12-9}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -635,7 +665,7 @@ Il seguente codice calcolerà il CCI delle aziende insieme a un grafico:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-11-10}
+\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-12-10}
 
 \hypertarget{tasso-di-variazione-roc}{%
 \subsubsection{Tasso di variazione
@@ -655,7 +685,7 @@ Il codice seguente calcolerà il ROC delle aziende insieme a un grafico:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-12-1}
+\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-13-1}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -667,7 +697,7 @@ Il codice seguente calcolerà il ROC delle aziende insieme a un grafico:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-12-2}
+\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-13-2}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -676,7 +706,7 @@ Il codice seguente calcolerà il ROC delle aziende insieme a un grafico:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-12-3}
+\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-13-3}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -688,7 +718,7 @@ Il codice seguente calcolerà il ROC delle aziende insieme a un grafico:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-12-4}
+\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-13-4}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -697,7 +727,7 @@ Il codice seguente calcolerà il ROC delle aziende insieme a un grafico:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-12-5}
+\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-13-5}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -709,7 +739,7 @@ Il codice seguente calcolerà il ROC delle aziende insieme a un grafico:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-12-6}
+\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-13-6}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -718,7 +748,7 @@ Il codice seguente calcolerà il ROC delle aziende insieme a un grafico:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-12-7}
+\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-13-7}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -730,7 +760,7 @@ Il codice seguente calcolerà il ROC delle aziende insieme a un grafico:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-12-8}
+\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-13-8}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -739,7 +769,7 @@ Il codice seguente calcolerà il ROC delle aziende insieme a un grafico:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-12-9}
+\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-13-9}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -751,7 +781,7 @@ Il codice seguente calcolerà il ROC delle aziende insieme a un grafico:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-12-10}
+\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-13-10}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -790,7 +820,7 @@ Distribution}\label{generate-random-data-following-a-normal-distribution}}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-14-1}
+\includegraphics{cripto_update_files/figure-latex/unnamed-chunk-15-1}
 
 In this example, we first generate a sample of random data following a
 normal distribution using the rnorm() function. We then create a

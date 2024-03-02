@@ -6,10 +6,10 @@ author: "Enrico Pirani Max"
 fate: "`r Sys.Date()`"
 output:
   tufte::tufte_html: default
-  tufte::tufte_book:
+  tufte::tufte_handout:
     citation_package: natbib
     latex_engine: xelatex
-  tufte::tufte_handout:
+  tufte::tufte_book:
     citation_package: natbib
     latex_engine: xelatex
 bibliography: skeleton.bib
@@ -84,6 +84,7 @@ ETH <- `ETH-USD`
 BNB <- `BNB-USD`
 ADA <- `ADA-USD`
 XRP <- `XRP-USD`
+SOL <- `SOL-USD`
 ```
 
 
@@ -133,7 +134,7 @@ legend("left",
 ```{r}
 sma50_btc <- SMA(BNB$`BNB-USD.Close`, n = 50)
 sma100_btc <- SMA(BNB$`BNB-USD.Close`, n = 100)
-lineChart(`BNB-USD`, theme = chartTheme("black"))
+lineChart(`BNB-USD`, theme = chartTheme("white"))
 addSMA(n = 50, col = "blue")
 addSMA(n = 100, col = "orange")
 legend("left",
@@ -153,6 +154,18 @@ addSMA(n = 100, col = "orange")
 legend("left",
   col = c("green", "blue", "orange"),
   legend = c("BNB-USD", "SMA50", "SMA100"), lty = 1, bty = "n",
+  text.col = "white", cex = 0.8
+)
+```
+```{r}
+sma50_btc <- SMA(SOL$`SOL-USD.Close`, n = 50)
+sma100_btc <- SMA(SOL$`SOL-USD.Close`, n = 100)
+lineChart(`SOL-USD`, theme = chartTheme("white"))
+addSMA(n = 50, col = "blue")
+addSMA(n = 100, col = "orange")
+legend("left",
+  col = c("green", "blue", "orange"),
+  legend = c("SOL-USD", "SMA50", "SMA100"), lty = 1, bty = "n",
   text.col = "white", cex = 0.8
 )
 ```
