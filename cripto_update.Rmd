@@ -12,7 +12,7 @@ output:
   tufte::tufte_book:
     citation_package: natbib
     latex_engine: xelatex
-bibliography: skeleton.bib
+fibliography: skeleton.bib
 link-citations: yes
 ---
 
@@ -28,7 +28,7 @@ importare i nostri pacchetti richiesti.
 ```{r}
 y <- rnorm(100)
 x <- rnorm(100)
-m <- lm(y ~ x)
+d <- lm(y ~ x)
 summary(x)
 summary(m)
 ```
