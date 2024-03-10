@@ -89,17 +89,25 @@ SOL <- `SOL-USD`
 
 
 ```{r}
-# 1. BTC-USD
-sma50_btc <- SMA(BTC$`BTC-USD.Close`, n = 50)
-sma100_btc <- SMA(BTC$`BTC-USD.Close`, n = 100)
-lineChart(`BTC-USD`, theme = chartTheme("black"))
-addSMA(n = 50, col = "blue")
-addSMA(n = 100, col = "orange")
-legend("left",
-  col = c("green", "blue", "orange"),
-  legend = c("BTC-USD", "SMA50", "SMA100"), lty = 1, bty = "n",
-  text.col = "white", cex = 0.8
-)
+ # Replace NAs with the mean of the column
+ BTC$`BTC-USD.Close`[is.na(BTC$`BTC-USD.Close`)] <- mean(BTC$`BTC-USD.Close`, na.rm = TRUE)
+
+ # Calculate moving averages
+ sma50_btc <- SMA(BTC$`BTC-USD.Close`, n = 50)
+ sma100_btc <- SMA(BTC$`BTC-USD.Close`, n = 100)
+
+ # Plot the data
+ lineChart(`BTC-USD`, theme = chartTheme("black"))
+ addSMA(n = 50, col = "blue")
+ addSMA(n = 100, col = "orange")
+
+ # Add legend
+ legend("left",
+   col = c("green", "blue", "orange"),
+   legend = c("BTC-USD", "SMA50", "SMA100"), lty = 1, bty = "n",
+   text.col = "white", cex = 0.8
+ )
+
 ```
 
 ```{r}
