@@ -112,6 +112,8 @@ SOL <- `SOL-USD`
 
 ```{r}
 # 2. ETH-USD
+ETH$`ETH-USD.Close`[is.na(ETH$`-USD.Close`)] <- mean(ETH$`ETH-USD.Close`, na.rm = TRUE)
+
 sma50_btc <- SMA(ETH$`ETH-USD.Close`, n = 50)
 sma100_btc <- SMA(ETH$`ETH-USD.Close`, n = 100)
 lineChart(`ETH-USD`, theme = chartTheme("black"))
