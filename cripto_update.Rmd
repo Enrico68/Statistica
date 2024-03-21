@@ -14,6 +14,9 @@ output:
     latex_engine: xelatex
 fibliography: skeleton.bib
 link-citations: yes
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 ## Importazione delle librerie necessarie
@@ -25,15 +28,14 @@ librerie finanziarie più popolari in R, ovvero Quantmod, TTR e
 Performance Analytics. Utilizzando la funzione library in R, possiamo
 importare i nostri pacchetti richiesti.
 
-
 ```{r}
 library(quantmod)
 library(PerformanceAnalytics)
 library(TTR)
 ```
 
-
 ## Passaggio 2: Estrazione dei dati da Yahoo e Plotting di base
+
 durante tutto il nostro processo, lavoreremo con i dati del prezzo delle
 cryptovalute Bitcoin, Ethereum, Binance, Cardano e XRP. Estraiamo i dati
 di queste valute da Yahoo in R.
@@ -62,13 +64,21 @@ barChart(`SOL-USD`, theme = chartTheme("black"))
 
 ## Creazione di indicatori tecnici
 
-Ci sono molti indicatori tecnici utilizzati per l'analisi finanziaria ma, per la nostra analisi, utilizzeremo e creeremo sei dei più famosi indicatori tecnici, ovvero: Media mobile semplice (SMA), Parabolic Stop And Reverse (SAR), Indice del canale delle materie prime (CCI), Tasso di variazione (ROC), Indice del momento stocastico (SMI) e infine Williams %R. Facciamolo!. Nella nuova dimensione di questi 
+Ci sono molti indicatori tecnici utilizzati per l'analisi finanziaria
+ma, per la nostra analisi, utilizzeremo e creeremo sei dei più famosi
+indicatori tecnici, ovvero: Media mobile semplice (SMA), Parabolic Stop
+And Reverse (SAR), Indice del canale delle materie prime (CCI), Tasso di
+variazione (ROC), Indice del momento stocastico (SMI) e infine Williams
+%R. Facciamolo!. Nella nuova dimensione di questi
 
 ### Media mobile semplice (SMA):
 
-L'intervallo di tempo standard che prenderemo è di 20 giorni SMA e 50 giorni SMA. Ma non ci sono restrizioni nell'uso di qualsiasi intervallo di tempo.
+L'intervallo di tempo standard che prenderemo è di 20 giorni SMA e 50
+giorni SMA. Ma non ci sono restrizioni nell'uso di qualsiasi intervallo
+di tempo.
 
-Il seguente codice calcolerà la SMA di tre aziende per 20 giorni e 50 giorni insieme ad un grafico:
+Il seguente codice calcolerà la SMA di tre aziende per 20 giorni e 50
+giorni insieme ad un grafico:
 
 ```{r}
 BTC <- `BTC-USD`
@@ -78,7 +88,6 @@ ADA <- `ADA-USD`
 XRP <- `XRP-USD`
 SOL <- `SOL-USD`
 ```
-
 
 ```{r}
 # Replace NAs with the mean of the column
@@ -118,8 +127,6 @@ legend("left",
 )
 ```
 
-
-
 ```{r}
 sma50_btc <- SMA(ADA$`ADA-USD.Close`, n = 50)
 sma100_btc <- SMA(ADA$`ADA-USD.Close`, n = 100)
@@ -146,7 +153,6 @@ legend("left",
 )
 ```
 
-
 ```{r}
 sma50_btc <- SMA(XRP$`XRP-USD.Close`, n = 50)
 sma100_btc <- SMA(XRP$`XRP-USD.Close`, n = 100)
@@ -159,6 +165,7 @@ legend("left",
   text.col = "white", cex = 0.8
 )
 ```
+
 ```{r}
 sma50_btc <- SMA(SOL$`SOL-USD.Close`, n = 50)
 sma100_btc <- SMA(SOL$`SOL-USD.Close`, n = 100)
@@ -174,7 +181,10 @@ legend("left",
 
 ### Indice del Canale delle Materie Prime (CCI):
 
-Per calcolare il CCI, dobbiamo considerare i prezzi giornalieri di massimo, minimo e chiusura delle aziende insieme a un periodo di tempo specificato e un valore costante. In questo passaggio, prenderemo 20 giorni come periodo di tempo e 0,015 come valore costante.
+Per calcolare il CCI, dobbiamo considerare i prezzi giornalieri di
+massimo, minimo e chiusura delle aziende insieme a un periodo di tempo
+specificato e un valore costante. In questo passaggio, prenderemo 20
+giorni come periodo di tempo e 0,015 come valore costante.
 
 Il seguente codice calcolerà il CCI delle aziende insieme a un grafico:
 
@@ -209,7 +219,9 @@ addCCI(n = 20, c = 0.015)
 
 ### Tasso di variazione (ROC)
 
-Per calcolare il ROC, dobbiamo considerare un intervallo di tempo specificato e non ci sono restrizioni nell'utilizzare qualsiasi periodo. In questo passaggio, prenderemo 25 giorni come periodo di tempo.
+Per calcolare il ROC, dobbiamo considerare un intervallo di tempo
+specificato e non ci sono restrizioni nell'utilizzare qualsiasi periodo.
+In questo passaggio, prenderemo 25 giorni come periodo di tempo.
 
 Il codice seguente calcolerà il ROC delle aziende insieme a un grafico:
 
@@ -258,6 +270,7 @@ legend("left",
   text.col = "white", cex = 0.8
 )
 ```
+
 ```{r}
 # Set the number of successes (3 heads)
 x <- 3
@@ -276,6 +289,7 @@ print(probability)
 ```
 
 # Generate random data following a normal Distribution
+
 ```{r}
 data <- rnorm(1000, mean = 0, sd = 1)
 # Plot a histogram of the data
@@ -284,14 +298,18 @@ hist(data, breaks = 30, col = "skyblue", main = "Normal Distribution", xlab = "V
 curve(dnorm(x, mean = mean(data), sd = sd(data)), add = TRUE, col = "red")
 ```
 
-In this example, we first generate a sample of random data following a normal distribution using the rnorm() function. We then create a
-histogram plot of the data using the hist() function, which visualizes the distribution of the data.
+In this example, we first generate a sample of random data following a
+normal distribution using the rnorm() function. We then create a
+histogram plot of the data using the hist() function, which visualizes
+the distribution of the data.
 
-To overlay a curve representing the probability density function of the normal distribution on the histogram, we use the curve() function
-with the dnorm() function to calculate the probability density at each point.
+To overlay a curve representing the probability density function of the
+normal distribution on the histogram, we use the curve() function with
+the dnorm() function to calculate the probability density at each point.
 
-This simple R Markdown code provides a visual and practical demonstration of the normal distribution, allowing readers to understand and
-appreciate this fundamental concept in statistics.
+This simple R Markdown code provides a visual and practical
+demonstration of the normal distribution, allowing readers to understand
+and appreciate this fundamental concept in statistics.
 
 ```{r}
 library(cryptoQuotes)
@@ -357,4 +375,60 @@ cryptoQuotes::chart(
 )
 ```
 
+Ora provo inserire **linee di codice `Python`**
 
+```{python}
+print ("Helo World")
+
+```
+
+ora inserisco codice R
+
+```{r}
+# Install and load the rgl package
+
+library(rgl)
+
+# Create some sample data
+x <- seq(-pi, pi, length.out = 100)
+y <- sin(x)
+z <- cos(x)
+
+# Create a 3D plot
+plot3d(x, y, z, type = "l", col = "blue")
+
+```
+
+```{r}
+# Define the function to integrate
+f <- function(x) {
+  return(x^2)  # example function x^2
+}
+
+# Integrate the function from 0 to 1
+integral <- integrate(f, lower = 0, upper = 1)
+
+# Plot the function and the integral
+curve(f, from = 0, to = 1, col = "blue", xlab = "x", ylab = "f(x)", main = "Plot of a Function and its Integral")
+abline(h = 0, col = "gray")  # add x-axis
+segments(0, 0, 1, 0, col = "gray")  # add line for integral
+text(0.5, 0.5, paste("Integral =", round(integral$value, 2)), col = "red")  # add text with integral value
+
+
+```
+
+```{r}
+library(reticulate)
+
+use_python("/usr/local/bin/python3.12", required = T)
+```
+
+```{python}
+
+py_install(matplotlib)
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+```
