@@ -25,14 +25,6 @@ librerie finanziarie più popolari in R, ovvero Quantmod, TTR e
 Performance Analytics. Utilizzando la funzione library in R, possiamo
 importare i nostri pacchetti richiesti.
 
-```{r}
-y <- rnorm(100)
-x <- rnorm(100)
-d <- lm(y ~ x)
-summary(x)
-summary(m)
-```
-
 
 ```{r}
 library(quantmod)
@@ -89,24 +81,24 @@ SOL <- `SOL-USD`
 
 
 ```{r}
- # Replace NAs with the mean of the column
- BTC$`BTC-USD.Close`[is.na(BTC$`BTC-USD.Close`)] <- mean(BTC$`BTC-USD.Close`, na.rm = TRUE)
+# Replace NAs with the mean of the column
+BTC$`BTC-USD.Close`[is.na(BTC$`BTC-USD.Close`)] <- mean(BTC$`BTC-USD.Close`, na.rm = TRUE)
 
- # Calculate moving averages
- sma50_btc <- SMA(BTC$`BTC-USD.Close`, n = 50)
- sma100_btc <- SMA(BTC$`BTC-USD.Close`, n = 100)
+# Calculate moving averages
+sma50_btc <- SMA(BTC$`BTC-USD.Close`, n = 50)
+sma100_btc <- SMA(BTC$`BTC-USD.Close`, n = 100)
 
  # Plot the data
- lineChart(`BTC-USD`, theme = chartTheme("black"))
- addSMA(n = 50, col = "blue")
- addSMA(n = 100, col = "orange")
+lineChart(`BTC-USD`, theme = chartTheme("black"))
+addSMA(n = 50, col = "blue")
+addSMA(n = 100, col = "orange")
 
- # Add legend
- legend("left",
-   col = c("green", "blue", "orange"),
-   legend = c("BTC-USD", "SMA50", "SMA100"), lty = 1, bty = "n",
-   text.col = "white", cex = 0.8
- )
+# Add legend
+legend("left",
+  col = c("green", "blue", "orange"),
+  legend = c("BTC-USD", "SMA50", "SMA100"), lty = 1, bty = "n",
+  text.col = "white", cex = 0.8
+)
 
 ```
 
@@ -300,6 +292,69 @@ with the dnorm() function to calculate the probability density at each point.
 
 This simple R Markdown code provides a visual and practical demonstration of the normal distribution, allowing readers to understand and
 appreciate this fundamental concept in statistics.
+
+```{r}
+library(cryptoQuotes)
+SOL <- cryptoQuotes::get_quote(
+ticker ="SOLUSDT",
+source = "binance",
+futures = FALSE, 
+interval = "30m",
+from = "2024-03-19"
+)
+```
+
+```{r}
+## Chart BTC
+## using klines, SMA, 
+## MACD and Bollinger Bands
+cryptoQuotes::chart(
+  ticker = SOL,
+  main   = cryptoQuotes::kline(),
+  sub    = list(
+    cryptoQuotes::volume(),
+    cryptoQuotes::macd()
+  ),
+  indicator = list(
+    cryptoQuotes::sma(n = 7),
+    cryptoQuotes::sma(n = 14),
+    cryptoQuotes::sma(n = 21),
+    cryptoQuotes::bollinger_bands()
+    # cryptoQuotes::rsi(n=14, maType = "SMA", upper_limit = 80,lower_limit = 20)
+    )
+)
+```
+
+```{r}
+ETH <- cryptoQuotes::get_quote(
+ticker ="ETHEUR",
+source = "binance",
+futures = FALSE, 
+interval = "1w",
+from = "2020-01-01",
+to = Sys.Date() 
+)
+```
+
+```{r}
+## Chart BTC
+## using klines, SMA, 
+## MACD and Bollinger Bands
+cryptoQuotes::chart(
+  ticker = ETH,
+  main   = cryptoQuotes::kline(),
+  sub    = list(
+    cryptoQuotes::volume(),
+    cryptoQuotes::macd()
+  ),
+  indicator = list(
+    cryptoQuotes::sma(n = 7),
+    cryptoQuotes::sma(n = 14),
+    cryptoQuotes::sma(n = 21),
+    cryptoQuotes::bollinger_bands()
+    # cryptoQuotes::rsi(n=14, maType = "SMA", upper_limit = 80,lower_limit = 20)
+    )
+)
 ```
 
 
