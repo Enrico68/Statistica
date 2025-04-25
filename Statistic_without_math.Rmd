@@ -5,13 +5,13 @@ subtitle: "Un manualetto di statistica adatta ad uso medico" # only for html out
 author: "Pirani Max Enrico"
 date: "`r Sys.Date()`"
 output:
+  tufte::tufte_html: default
   tufte::tufte_handout:
     citation_package: natbib
     latex_engine: xelatex
   tufte::tufte_book:
     citation_package: natbib
     latex_engine: xelatex
-  tufte::tufte_html: default
 bibliography: skeleton.bib
 link-citations: yes
 ---
