@@ -43,10 +43,10 @@ di queste valute da Yahoo in R.
 ```{r}
 getSymbols("BTC-USD", src = "yahoo", from = "2019-01-01")
 getSymbols("ETH-USD", src = "yahoo", from = "2019-01-01")
-getSymbols("BNB-USD", src = "yahoo", from = "2019-01-01")
-getSymbols("ADA-USD", src = "yahoo", from = "2019-01-01")
-getSymbols("XRP-USD", src = "yahoo", from = "2019-01-01")
-getSymbols("SOL-USD", src = "yahoo", from = "2020-01-01")
+# getSymbols("BNB-USD", src = "yahoo", from = "2019-01-01")
+# getSymbols("ADA-USD", src = "yahoo", from = "2019-01-01")
+# getSymbols("XRP-USD", src = "yahoo", from = "2019-01-01")
+# getSymbols("SOL-USD", src = "yahoo", from = "2020-01-01")
 ```
 
 Ora facciamo un po' di visualizzazione dei nostri dati estratti! Il
