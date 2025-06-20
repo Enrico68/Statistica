@@ -55,11 +55,11 @@ azioni insieme al volume.
 
 ```{r}
 barChart(`BTC-USD`, theme = chartTheme("black"))
-barChart(`BNB-USD`, theme = chartTheme("black"))
+# barChart(`BNB-USD`, theme = chartTheme("black"))
 barChart(`ETH-USD`, theme = chartTheme("black"))
-barChart(`ADA-USD`, theme = chartTheme("black"))
-barChart(`XRP-USD`, theme = chartTheme("black"))
-barChart(`SOL-USD`, theme = chartTheme("black"))
+# barChart(`ADA-USD`, theme = chartTheme("black"))
+# barChart(`XRP-USD`, theme = chartTheme("black"))
+# barChart(`SOL-USD`, theme = chartTheme("black"))
 ```
 
 ## Creazione di indicatori tecnici
